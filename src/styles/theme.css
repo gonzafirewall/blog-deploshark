@@ -1,0 +1,106 @@
+/*
+ * Tokens de marca/tema.
+ * Este es el único archivo que deberías tocar para adaptar el blog a los
+ * colores definitivos de Deploshark más adelante. Todo lo demás consume
+ * estas variables, nunca colores hardcodeados.
+ *
+ * Paleta base derivada de logo_deploshark.png: azul marino + gris carbón + plata.
+ * Dark ("darkula") es el tema por defecto; light queda disponible con el toggle.
+ */
+
+:root {
+  /* --- Marca (independiente de light/dark) --- */
+  --brand-navy: #1e3a6e;
+  --brand-navy-bright: #4f86d6;
+  --brand-charcoal: #2b2b2e;
+  --brand-silver: #b8bcc2;
+
+  /* --- Tipografía --- */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* --- Ritmo / layout --- */
+  --content-width: 46rem;
+  --wide-width: 64rem;
+  --radius: 6px;
+}
+
+/* ============ DARK (default) ============ */
+:root,
+[data-theme='dark'] {
+  --bg: #1b1c21;
+  --bg-elevated: #242529;
+  --bg-inset: #17181c;
+  --border: #35363d;
+
+  --text: #e4e6eb;
+  --text-dim: #9a9ca5;
+  --text-faint: #6b6d76;
+
+  --accent: var(--brand-navy-bright);
+  --accent-contrast: #0b1320;
+  --accent-soft: #28344a;
+
+  --link: var(--brand-navy-bright);
+  --link-hover: #7aa6e8;
+
+  --code-bg: #17181c;
+  --tag-bg: #28344a;
+  --tag-text: #9fc1f0;
+
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+/* ============ LIGHT ============ */
+[data-theme='light'] {
+  --bg: #fafafa;
+  --bg-elevated: #ffffff;
+  --bg-inset: #f0f1f3;
+  --border: #e1e3e8;
+
+  --text: #1c1d21;
+  --text-dim: #51535c;
+  --text-faint: #7b7d86;
+
+  --accent: var(--brand-navy);
+  --accent-contrast: #ffffff;
+  --accent-soft: #e6edf9;
+
+  --link: var(--brand-navy);
+  --link-hover: #142a52;
+
+  --code-bg: #f0f1f3;
+  --tag-bg: #e6edf9;
+  --tag-text: var(--brand-navy);
+
+  --shadow: 0 8px 24px rgba(20, 24, 40, 0.08);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #fafafa;
+    --bg-elevated: #ffffff;
+    --bg-inset: #f0f1f3;
+    --border: #e1e3e8;
+
+    --text: #1c1d21;
+    --text-dim: #51535c;
+    --text-faint: #7b7d86;
+
+    --accent: var(--brand-navy);
+    --accent-contrast: #ffffff;
+    --accent-soft: #e6edf9;
+
+    --link: var(--brand-navy);
+    --link-hover: #142a52;
+
+    --code-bg: #f0f1f3;
+    --tag-bg: #e6edf9;
+    --tag-text: var(--brand-navy);
+
+    --shadow: 0 8px 24px rgba(20, 24, 40, 0.08);
+    color-scheme: light;
+  }
+}

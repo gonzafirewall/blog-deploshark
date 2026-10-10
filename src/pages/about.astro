@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COMPANY_URL } from '../consts';
+---
+
+<BaseLayout title="Sobre esto" description="Sobre el blog de Deploshark.">
+  <article class="prose">
+    <h1>Sobre esto</h1>
+    <p>
+      Este es el blog técnico de <a href={COMPANY_URL} target="_blank" rel="noopener noreferrer">Deploshark</a>.
+      Escribo (todavía con bastante ayuda de IA) sobre programación, inteligencia artificial, y de tanto en
+      tanto alguna reflexión más filosófica sobre construir software — sin ponerme demasiado personal.
+    </p>
+    <p>
+      La idea es simple: no soy el mejor escribiendo, así que arranco apoyándome fuerte en asistencia de IA
+      para bajar ideas a texto, y con el tiempo ir escribiendo cada vez más por mi cuenta. Este blog es en
+      parte el registro de esa mejora.
+    </p>
+    <p>
+      Algunos posts marcados como <em>archivo</em> vienen migrados del blog viejo en Blogger — se mantienen
+      tal cual quedaron por valor histórico, aunque el contenido técnico pueda estar desactualizado.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose h1 {
+    font-size: 1.8rem;
+  }
+  .prose p {
+    color: var(--text-dim);
+    margin: 1rem 0;
+  }
+</style>

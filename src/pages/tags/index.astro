@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const counts = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    counts.set(tag, (counts.get(tag) ?? 0) + 1);
+  }
+}
+const tags = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="Tags">
+  <h1 class="page-title">Tags</h1>
+  <ul class="tag-list">
+    {tags.map(([tag, count]) => (
+      <li>
+        <a href={`/tags/${tag}/`}>#{tag}</a>
+        <span class="count">{count}</span>
+      </li>
+    ))}
+  </ul>
+  {tags.length === 0 && <p>Todavía no hay tags.</p>}
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .tag-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .tag-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+  }
+  .count {
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+</style>

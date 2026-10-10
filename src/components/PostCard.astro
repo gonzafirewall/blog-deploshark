@@ -1,0 +1,74 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  legacy?: boolean;
+}
+const { slug, title, description, pubDate, tags, legacy } = Astro.props;
+const formatted = pubDate.toLocaleDateString('es-AR', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<article class="post-card">
+  <a class="title-link" href={`/blog/${slug}/`}>
+    <h2>{title}</h2>
+  </a>
+  <p class="description">{description}</p>
+  <div class="meta">
+    <time datetime={pubDate.toISOString()}>{formatted}</time>
+    {legacy && <span class="badge" title="Migrado del blog viejo en Blogger">archivo</span>}
+    {tags.slice(0, 3).map((tag) => (
+      <a class="tag" href={`/tags/${tag}/`}>#{tag}</a>
+    ))}
+  </div>
+</article>
+
+<style>
+  .post-card {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .title-link {
+    text-decoration: none;
+  }
+  .post-card h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+  .title-link:hover h2 {
+    color: var(--accent);
+  }
+  .description {
+    margin: 0 0 0.6rem;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+  }
+  .tag {
+    color: var(--tag-text);
+    background: var(--tag-bg);
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .badge {
+    border: 1px solid var(--border);
+    padding: 0.05rem 0.45rem;
+    border-radius: 4px;
+  }
+</style>

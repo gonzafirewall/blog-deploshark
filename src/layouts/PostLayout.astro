@@ -1,0 +1,135 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags: string[];
+  cover?: ImageMetadata | string;
+  coverAlt?: string;
+  legacy?: boolean;
+  originalUrl?: string;
+}
+
+const { title, description, pubDate, updatedDate, tags, cover, coverAlt, legacy, originalUrl } =
+  Astro.props;
+
+const formatted = pubDate.toLocaleDateString('es-AR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const ogImage = typeof cover === 'string' ? cover : cover?.src;
+---
+
+<BaseLayout title={title} description={description} image={ogImage} article>
+  <article>
+    <header class="post-header">
+      <h1>{title}</h1>
+      <div class="meta">
+        <time datetime={pubDate.toISOString()}>{formatted}</time>
+        {updatedDate && (
+          <span>
+            · actualizado el{' '}
+            {updatedDate.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </span>
+        )}
+      </div>
+      {legacy && (
+        <p class="legacy-note">
+          Este post viene del blog viejo en Blogger
+          {originalUrl && (
+            <>
+              {' '}
+              (<a href={originalUrl} target="_blank" rel="noopener noreferrer">original</a>)
+            </>
+          )}
+          . Puede tener info desactualizada — lo vamos a ir revisando.
+        </p>
+      )}
+      <div class="tags">
+        {tags.map((tag) => (
+          <a class="tag" href={`/tags/${tag}/`}>#{tag}</a>
+        ))}
+      </div>
+    </header>
+
+    {cover && (
+      <div class="cover">
+        {typeof cover === 'string' ? (
+          <img src={cover} alt={coverAlt ?? ''} loading="eager" />
+        ) : (
+          <Image src={cover} alt={coverAlt ?? ''} width={920} />
+        )}
+      </div>
+    )}
+
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post-header {
+    margin-bottom: 2rem;
+  }
+  .post-header h1 {
+    font-size: 2rem;
+    margin: 0 0 0.6rem;
+  }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-faint);
+  }
+  .legacy-note {
+    margin: 0.75rem 0 0;
+    padding: 0.6rem 0.9rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+  .tags {
+    margin-top: 0.85rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--tag-text);
+    background: var(--tag-bg);
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .cover {
+    margin: 1.5rem 0;
+  }
+  .cover img {
+    width: 100%;
+    height: auto;
+  }
+  .prose :global(h2) {
+    margin-top: 2.2rem;
+    font-size: 1.4rem;
+  }
+  .prose :global(h3) {
+    margin-top: 1.8rem;
+    font-size: 1.15rem;
+  }
+  .prose :global(p) {
+    margin: 1rem 0;
+  }
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.4rem;
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import { COMPANY_URL, AUTHOR } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="inner">
+    <p>
+      © {year} {AUTHOR} · <a href={COMPANY_URL} target="_blank" rel="noopener noreferrer">deploshark.com</a>
+    </p>
+    <p class="meta">
+      Escrito con asistencia de IA, revisado por humano. <a href="/rss.xml">RSS</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+    color: var(--text-faint);
+    font-size: 0.85rem;
+  }
+  .inner {
+    max-width: var(--wide-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .meta a {
+    color: var(--text-faint);
+  }
+</style>

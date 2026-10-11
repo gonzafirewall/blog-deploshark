@@ -16,12 +16,12 @@ Markdown con asistencia de IA y publicar vía GitHub Pages.
 
 | Comando                  | Qué hace                                              |
 | ------------------------ | ------------------------------------------------------ |
-| `npm install`             | Instala dependencias                                   |
-| `npm run dev`              | Server local en `localhost:4321`                       |
-| `npm run build`            | Build de producción a `./dist/`                        |
-| `npm run preview`          | Sirve el build de producción localmente                |
-| `npm run check`            | Chequeo de tipos / content collections                 |
-| `npm run import:blogger`   | Importa posts desde un export de Blogger (ver abajo)   |
+| `pnpm install`             | Instala dependencias                                   |
+| `pnpm dev`                 | Server local en `localhost:4321`                       |
+| `pnpm build`               | Build de producción a `./dist/`                        |
+| `pnpm preview`             | Sirve el build de producción localmente                |
+| `pnpm check`               | Chequeo de tipos / content collections                 |
+| `pnpm import:blogger`      | Importa posts desde un export de Blogger (ver abajo)   |
 
 ## Escribir un post
 
@@ -44,7 +44,7 @@ del archivo define la URL: `mi-post.md` → `/blog/mi-post/`.
 
 Si preferís que un post quede en `src/content/blog/` pero no público todavía (por ejemplo para
 programarlo a futuro), usá `draft: true` en vez de la carpeta `drafts/` — con eso no sale en
-`npm run build` (producción) pero sí lo ves en `npm run dev`.
+`pnpm build` (producción) pero sí lo ves en `pnpm dev`.
 
 ### Frontmatter
 

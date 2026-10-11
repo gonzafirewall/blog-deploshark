@@ -22,7 +22,7 @@ Seguí este proceso:
    - `title`, `description` (1-2 oraciones, para listados/SEO)
    - `pubDate` con la fecha de hoy
    - `tags`: 2-4 tags relevantes, en minúscula, coherentes con tags ya usados en el sitio
-     cuando aplique (mirá `/tags/` corriendo `npm run dev` o grepeando `src/content/blog/*.md`
+     cuando aplique (mirá `/tags/` corriendo `pnpm dev` o grepeando `src/content/blog/*.md`
      si hace falta)
    - `draft: true`
    - Escribí un primer borrador completo del cuerpo en Markdown, no solo un esqueleto de

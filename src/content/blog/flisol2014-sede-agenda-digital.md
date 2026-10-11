@@ -7,7 +7,7 @@ draft: false
 legacy: true
 ---
 
-[![](/images/legacy/flisol2014-sede-agenda-digital/IMG_20140427_205018.jpg)](/images/legacy/flisol2014-sede-agenda-digital/IMG%5F20140427%5F205018.jpg)
+[![](/images/legacy/flisol2014-sede-agenda-digital/IMG_20140427_205018.jpg)](/images/legacy/flisol2014-sede-agenda-digital/IMG_20140427_205018.jpg)
 
 **Panel de apertura "El vínculo entre el Software Libre y el Estado"**  
 

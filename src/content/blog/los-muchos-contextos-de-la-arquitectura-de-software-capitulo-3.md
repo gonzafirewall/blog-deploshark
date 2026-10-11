@@ -15,7 +15,7 @@ La arquitectura reside en cuatro contextos deferentes:
 
 **Los StakeHolders o Partes Interesadas.**
 
-[![](/images/legacy/los-muchos-contextos-de-la-arquitectura-de-software-capitulo-3/IMG_20130907_123332.JPG)](/images/legacy/los-muchos-contextos-de-la-arquitectura-de-software-capitulo-3/IMG%5F20130907%5F123332.JPG)
+[![](/images/legacy/los-muchos-contextos-de-la-arquitectura-de-software-capitulo-3/IMG_20130907_123332.JPG)](/images/legacy/los-muchos-contextos-de-la-arquitectura-de-software-capitulo-3/IMG_20130907_123332.JPG)
   
   
 Una arquitectura tiene algunas influencias que conducen a su creación, y su existencia tiene un impacto en el arquitecto, la organización y potencialmente, la industria. Nosotros llamaremos a estos ciclo el Ciclo de Influencia de la Arquitectura (Arquitecture Influence Cycle).

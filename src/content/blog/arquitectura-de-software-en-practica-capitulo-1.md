@@ -30,7 +30,7 @@ _Los neurólogos, ortopedistas, hematólogos y los dermatologos tienen diferente
 _Es un pequeño sistema cliente-servidor_  
 _Un sistema donde la vista de módulos es una vista de descomposición (submodulos o subsistemas de un sistema mayor). Y como en tiempo de ejecución van a ser 10 las máquinas clientes accediendo al servidor entonces podemos ver que van a ser 2 módulos (cliente y servidor) y 11 componentes (10 clientes, 1 servidor ) y 10 conectores que son las relaciones entre los componentes que se observan en la vista Cliente-Servidor._  
   
-[![](/images/legacy/arquitectura-de-software-en-practica-capitulo-1/IMG_20130902_225917.jpg)](/images/legacy/arquitectura-de-software-en-practica-capitulo-1/IMG%5F20130902%5F225917.jpg)
+[![](/images/legacy/arquitectura-de-software-en-practica-capitulo-1/IMG_20130902_225917.jpg)](/images/legacy/arquitectura-de-software-en-practica-capitulo-1/IMG_20130902_225917.jpg)
 
   
 Esto es todo por esta vez. Me sirvió para repasar un poco lo que había leído y para practicar mi traducción :S del inglés espero que les haya servido aunque sea poco.  

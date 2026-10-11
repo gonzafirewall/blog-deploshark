@@ -15,7 +15,7 @@ Luego de jugar con la linea de comandos de ansible\[0\], y tomarme no mucho tiem
   
 Esta es mi configuración de ejemplo que no es ni siquiera util pero es una forma de empezar a probarlo.  
   
-```
+```yaml
 ---
 - hosts: epas.dev
   user: www-data
@@ -25,7 +25,6 @@ Esta es mi configuración de ejemplo que no es ni siquiera util pero es una form
       apt: pkg=apache2 state=absent
     - name: Confirmando funcionamiento de Nginx
       service: name=nginx state=started
-
 ```
 
   
@@ -33,8 +32,8 @@ Lo interesante es ver que cuando defino un servicio no defino el **Comando a eje
   
 En este caso previamente voy a parar nginx solamente para que vean que sucede.  
   
-```
-admin@quicuo-kaizen:/home/proyectos/serviquo/plays$ ansible-playbook playbook.yml 
+```console
+admin@quicuo-kaizen:/home/proyectos/serviquo/plays$ ansible-playbook playbook.yml
 
 PLAY [epas.dev] *************************************************************** 
 
@@ -59,7 +58,7 @@ Se puede definir un template armado en el bonito jinja2\[5\] y después subirlo 
 handlers  
 Son eventos en el caso de que se hagan cambios el siguiente "task" es un ejemplo sacado directamente de la web de ansible \[6\]  
   
-```
+```yaml
 - name: template configuration file
   template: src=template.j2 dest=/etc/foo.conf
   notify:
@@ -67,7 +66,7 @@ Son eventos en el caso de que se hagan cambios el siguiente "task" es un ejemplo
      - restart apache
 ```
 
-```
+```yaml
 handlers:
     - name: restart memcached
       service:  name=memcached state=restarted

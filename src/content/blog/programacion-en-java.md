@@ -8,7 +8,7 @@ draft: false
 legacy: true
 ---
 
-[![](/images/legacy/programacion-en-java/evolucion_estad_lateral_al_15_nov.jpg)](/images/legacy/programacion-en-java/evolucion%5Festad%5Flateral%5Fal%5F15%5Fnov.jpg)Como seguramente todos los que estamos inmersos por gusto o por trabajo en el mundo IT sabemos que el Mercado IT actual en la República Argentina y seguramente en otras partes del mundo está ansioso de Desarrolladores. Y de los tantos lenguajes que hay para elegir, el mas valorado actualmente es Java.  
+[![](/images/legacy/programacion-en-java/evolucion_estad_lateral_al_15_nov.jpg)](/images/legacy/programacion-en-java/evolucion_estad_lateral_al_15_nov.jpg)Como seguramente todos los que estamos inmersos por gusto o por trabajo en el mundo IT sabemos que el Mercado IT actual en la República Argentina y seguramente en otras partes del mundo está ansioso de Desarrolladores. Y de los tantos lenguajes que hay para elegir, el mas valorado actualmente es Java.  
 
 [Java ](http://es.wikipedia.org/wiki/Lenguaje%5Fde%5Fprogramaci%C3%B3n%5FJava)es un lenguaje de programación orientado a objetos desarrollado por Sun Microsystems, es, como dije anteriormente, el lenguaje más valorado o pedido en el mundo IT, las estadísticas de una página como UniversoBit.com (Bolsa de trabajo de Profesionales IT) no mienten (Ver Gráfico a la derecha). Vemos como los analistas programadores se llevan una buena porción del mercado laboral, y dentro de esto, la herramienta más utilizada o pedida por las empresas es el el Lenguaje de Programación Java. Una de las ventajas de este lenguaje es ser [multiplataforma, ](http://es.wikipedia.org/wiki/Multiplataforma)aunque en la actualidad hay varios lenguajes que profesan bajo esta misma premisa, este fue uno de los precursores.
 

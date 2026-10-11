@@ -15,7 +15,7 @@ Despues de mi fatidico intento con su versión Web (escrita en Django + Celery) 
 **Instalando Ansible en Ubuntu**
 
   
-```
+```bash
 $ sudo add-apt-repository ppa:rquillo/ansible
 $ sudo apt-get update
 $ sudo apt-get install ansible
@@ -28,7 +28,7 @@ para instalaciones en otras distros pueden leer por acá \[3\]
 El problema de instalarlo de esta manera es que en el repo está la versión 1.1 y si te pasa como a mi podés actualizarlo con 
 
   
-```
+```bash
 $ sudo pip install ansible --upgrade
 ```
 
@@ -36,7 +36,7 @@ $ sudo pip install ansible --upgrade
 Pero a mi me paso que el pip me lo instala en /usr/local/bin/ asi que tuve que hacer lo siguiente
 
   
-```
+```bash
 $ sudo rm /usr/bin/ansible*
 $ sudo ln -s /usr/local/bin/ansible* /usr/bin/.
 ```
@@ -50,7 +50,7 @@ Una vez instalado uno tiene unos comandos nuevos llamados ansible y ansible-play
 En /etc/ansible/hosts configuramos los hosts con los que vamos a jugar.
 
   
-```
+```bash
 $ sudo vim /etc/ansible/hosts
 # acá puse un par de hosts contra los que 
 # ya estoy validado con mi llave pública
@@ -60,7 +60,7 @@ $ sudo vim /etc/ansible/hosts
 Y entonces probamos nuestro primer comando
 
   
-```
+```console
 $ ansible all -m ping
 # En estos hosts no tengo el mismo usuario que en mi notebook
 # por lo que tengo que hacer un pequeño cambio a este comando
@@ -86,7 +86,7 @@ epas.test | success >> {
 De esta forma se puede ejecutar comanditos locos sin tener que hacer ninguna configuración 
 
   
-```
+```console
 $ ansible all -a "/bin/echo hello"
 epas.dev | success | rc=0 >>
 hello

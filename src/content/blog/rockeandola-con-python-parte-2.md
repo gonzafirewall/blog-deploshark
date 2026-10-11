@@ -14,24 +14,28 @@ Siguiendo los pasos de magmax \[0\]
   
 En este ejemplo vamos a crear una clase que hereda todas las funcionalidades de un diccionario solo vamos a modificar las funciones de obtener el atributo y de asignarle un atributo para interfacearlos con los del diccionario.  
   
-Esta es la definición de la clase:  
-  
-class DictObject(dict):  
-def \_\_getattr\_\_(self, key):  
-return self\[key\]  
-  
-def \_\_setattr\_\_(self, key, value):  
-self\[key\] = value  
-  
-Esta es la implementación de la misma.  
-  
-\>>> d = DictObject()  
-\>>> d\['uno'\] = 'one'  
-\>>> d.uno  
-'one'  
-\>>> d\['uno'\]  
-'one'  
-  
+Esta es la definición de la clase:
+
+```python
+class DictObject(dict):
+    def __getattr__(self, key):
+        return self[key]
+
+    def __setattr__(self, key, value):
+        self[key] = value
+```
+
+Esta es la implementación de la misma.
+
+```python
+>>> d = DictObject()
+>>> d['uno'] = 'one'
+>>> d.uno
+'one'
+>>> d['uno']
+'one'
+```
+
 Hacer esto nos genera un inconveniente por que las clases para los atributos tienen ciertas restricciones como que no se pueden comenzar con números, contener espacios ni otros signos de puntuación por consiguiente va a haber valores que no vamos a poder usar.  
   
 **Closures == Clausura <> Torneo Clausura**  
@@ -48,37 +52,41 @@ Un decorador es una función 'a' que recibe como argumento otra función 'b' y d
   
 Imaginemos que necesitamos loggear el acceso y salida de una función por pantalla.  
   
-\>>> def avisar(f):  
-... def inner(\*args, \*\*kwargs): ## Esta es una clausura  
-... print 'Se ejecuta la funcion %s' % f.\_\_name\_\_  
-... f(\*args, \*\*kwargs)  
-... print 'Se termino de ejecutar %s' % f.\_\_name\_\_  
-... return inner  
-...  
-\>>> def SumaLoca(a,b):  
-... print a + b  
-...  
-\>>> SumaLoca(10,5)  
-15  
-\>>> avisarSumaLoca = avisar(SumaLoca)  
-\>>> avisarSumaLoca(10,6)  
-Se ejecuta la funcion SumaLoca  
-16  
-Se termino de ejecutar SumaLoca  
-  
+```python
+>>> def avisar(f):
+...     def inner(*args, **kwargs):  # Esta es una clausura
+...         print 'Se ejecuta la funcion %s' % f.__name__
+...         f(*args, **kwargs)
+...         print 'Se termino de ejecutar %s' % f.__name__
+...     return inner
+...
+>>> def SumaLoca(a, b):
+...     print a + b
+...
+>>> SumaLoca(10, 5)
+15
+>>> avisarSumaLoca = avisar(SumaLoca)
+>>> avisarSumaLoca(10, 6)
+Se ejecuta la funcion SumaLoca
+16
+Se termino de ejecutar SumaLoca
+```
+
 Ahora esta función decorada nos avisará sobre su ejecución o finalización.  
   
 Desde Python 2.4 en adelante se ha añadido Azucar a la cosa esto lo hace un lenguaje más dulce (Cuak!) ( a esto se le llama Azucar Sintáctica) y nos permite hacer lo mismo pero de la siguiente forma.  
   
-\>>> @avisar  
-... def SumaLoca(a,b):  
-... print a + b  
-...  
-\>>> SumaLoca(10,6)  
-Se ejecuta la funcion SumaLoca  
-16  
-Se termino de ejecutar SumaLoca  
-  
+```python
+>>> @avisar
+... def SumaLoca(a, b):
+...     print a + b
+...
+>>> SumaLoca(10, 6)
+Se ejecuta la funcion SumaLoca
+16
+Se termino de ejecutar SumaLoca
+```
+
 Esta es una manera mucho más visual para hacerlo.  
   
 Una explicación mucho mejor al respecto van a encontrar en la edición Nro 4 de TheOriginalHackers \[3\] que está pronta a salir \[4\].  
@@ -97,33 +105,35 @@ Son funciones que devuelven resultados poco a poco y para esto lo hacen retornan
   
 Ejemplo Kamikaze mío tiene que ver en crear un metodo que recorra urls y devuelva el titulo de la web de a poco.  
   
-from BeautifulSoup import BeautifulSoup as bs  
-import urllib  
-  
-urls = \['http://www.google.com.ar', 'http://facebook.com', 'http://infobae.com.ar'\]  
-  
-def recorrer\_urls(urls):  
-for url in urls:  
-html = urllib.urlopen(url).read()  
-soup = bs(html)  
-yield soup.title  
+```python
+from BeautifulSoup import BeautifulSoup as bs
+import urllib
 
-  
-In \[2\]: recorrer\_urls(urls)  
-Out\[2\]:   
-  
-In \[3\]: gen\_urls = recorrer\_urls(urls)  
-  
-In \[4\]: gen\_urls.next()  
-Out\[4\]: <title>Google</title>  
-  
-In \[5\]: gen\_urls.next()  
-Out\[5\]: <title id="pageTitle">¡Bienvenido a Facebook en Español!</title>  
-  
-In \[6\]: gen\_urls.next()  
-Out\[6\]: <title>"El Chapo" Guzmán - Tragedia de Once - WhatsApp - Telegram - Paritarias - Crisis política en Venezuela - Fotos - Infobae</title>  
+urls = ['http://www.google.com.ar', 'http://facebook.com', 'http://infobae.com.ar']
 
-  
+def recorrer_urls(urls):
+    for url in urls:
+        html = urllib.urlopen(url).read()
+        soup = bs(html)
+        yield soup.title
+```
+
+```python
+In [2]: recorrer_urls(urls)
+Out[2]:
+
+In [3]: gen_urls = recorrer_urls(urls)
+
+In [4]: gen_urls.next()
+Out[4]: <title>Google</title>
+
+In [5]: gen_urls.next()
+Out[5]: <title id="pageTitle">¡Bienvenido a Facebook en Español!</title>
+
+In [6]: gen_urls.next()
+Out[6]: <title>"El Chapo" Guzmán - Tragedia de Once - WhatsApp - Telegram - Paritarias - Crisis política en Venezuela - Fotos - Infobae</title>
+```
+
 Esto es interesante cuando necesitemos recorrer una serie de datos pero no necesitamos que todos sean devueltos al mismo tiempo sino que se van generando dinamicamente uno a uno. \[6\]  
   
 \[0\] <http://magmax.org/2013/09/30/python-avanzado.html>  

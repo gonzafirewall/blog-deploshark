@@ -15,34 +15,38 @@ No declares variables para ser instancias especiales de una clase concreta. En s
   
 **La herencia** indica que una clase hereda muchas o todas sus características de una (o más) clase padre.  
   
-Cuando en Python hacemos  
-  
-class Padre(object):  
-def saltar(self):  
-print 'Estoy saltando'  
-  
-class Hijo(Padre):  
-pass  
-  
+Cuando en Python hacemos
+
+```python
+class Padre(object):
+    def saltar(self):
+        print 'Estoy saltando'
+
+class Hijo(Padre):
+    pass
+```
+
 Estamos diciendo que la clase Hijo hereda de Padre y le escribimos un "pass" para decir que no vamos a definir nada nuevo en esa clase. Entonces lo que sucederá es que el hijo va a heredar todo el comportamiento de su padre en este caso la clase hijo tiene de manera implícita el método "saltar" que hereda de su "Padre"  
   
 Hay otros detalles sobre el uso de herencias múltiples en Python que van a poder ver con más detalle en los links de referencia al final del Post \[0\]  
   
 **La composición** es definida en tiempo de ejecución a través de un objeto que adquiere referencias a otro objeto.Es un objeto que usa la interfaz de otro objeto lo que genera que se tenga que tener especial cuidado en el diseño. Y el objeto referenciado puede ser cambiado siempre que mantenga las mismas interfaces.  
   
-Un ejemplo de composición podría ser el siguiente:  
-  
-Class HabilidadSalto(objetc):  
-def ejecutar(self):  
-print 'Estoy saltando'  
-  
-Class Persona(object):  
-def \_\_init\_\_(self):  
-self.habilidadSaltar = HabilidadSalto()  
-  
-def saltar(self):  
-self.habilidadSaltar.ejecutar()  
-  
+Un ejemplo de composición podría ser el siguiente:
+
+```python
+Class HabilidadSalto(objetc):
+    def ejecutar(self):
+        print 'Estoy saltando'
+
+Class Persona(object):
+    def __init__(self):
+        self.habilidadSaltar = HabilidadSalto()
+
+    def saltar(self):
+        self.habilidadSaltar.ejecutar()
+```
+
 No estoy seguro de que sea un ejemplo muy adecuado pero es aproximadamente a lo que se refiere básicamente un objeto tiene dentro suyo una referencia a otro objeto y usa la interfaz de este último para llamar a acciones concretas.  
   
 **"Favorece la composición de objetos por sobre la herencia de clases"**  
@@ -50,21 +54,23 @@ No estoy seguro de que sea un ejemplo muy adecuado pero es aproximadamente a lo 
 La delegación es una manera de hacer composición tan potente para su reutilización como la herencia.  
 Dos objetos son los involucrados donde uno recibe el pedido y delega la operación a su delegado. Un ejemplo podría ser el siguiente que yo escribí en Python basándome en la explicación del libro \[1\] Design Patterns de GoF.  
   
-class Rectangulo(object):  
-def \_\_init\_\_(self, ancho, alto):  
-self.ancho = ancho  
-self.alto = alto  
-  
-def Area(self):  
-return self.ancho \* self.alto  
-  
-class Ventana(object)  
-def \_\_init\_\_(self, ancho, alto):  
-self.rectangulo = Rectangulo(ancho, alto)  
-  
-def Area(self):  
-self.rectangulo.Area()  
-  
+```python
+class Rectangulo(object):
+    def __init__(self, ancho, alto):
+        self.ancho = ancho
+        self.alto = alto
+
+    def Area(self):
+        return self.ancho * self.alto
+
+class Ventana(object):
+    def __init__(self, ancho, alto):
+        self.rectangulo = Rectangulo(ancho, alto)
+
+    def Area(self):
+        self.rectangulo.Area()
+```
+
 Esto tiene ventajas como que la ventana podría cambiar su comportamiento en tiempo de ejecución tan solo reemplazando la referencia a la clase Rectángulo por una referencia a otra clase Circular. Esto suponiendo que Circular y Rectángulo son del mismo tipo.  
   
 Las siguientes son causas comunes para el rediseño y como los patrones de diseño ayudan en ellas.  

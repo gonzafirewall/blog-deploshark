@@ -11,7 +11,7 @@ El año que viene, viene con muchas cosas nuevas, con muchos cambios, con la fin
   
 A quienes leen este Blog quiero agradecer un montón ya que este último mes y como viene pasando hace unos meses, gracias a ustedes y a que empecé a escribir más seguido, la cantidad de visitas crece mes a mes.  
   
-[![](/images/legacy/feliz-ano-2014-y-gracias-a-todos/Selección_023.png)](/images/legacy/feliz-ano-2014-y-gracias-a-todos/Selección%5F023.png)
+[![](/images/legacy/feliz-ano-2014-y-gracias-a-todos/Selección_023.png)](/images/legacy/feliz-ano-2014-y-gracias-a-todos/Selección_023.png)
 
 Este es de hoy último día del año a las 14 hs
 

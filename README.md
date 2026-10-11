@@ -88,6 +88,12 @@ Es una migración mecánica, no una reescritura — los posts migrados llevan un
 son de 2013-2015 y están técnicamente desactualizados). El export original no incluye el
 permalink real de cada post, así que no se linkea al "original" en Blogger.
 
+**Ojo:** después de la importación inicial, los posts migrados se revisaron a mano para
+envolver el código en bloques con syntax highlighting (lenguaje correcto por post) y corregir
+algunas entidades HTML rotas del Blogger original. Re-correr `import:blogger` sobrescribe esos
+archivos con la conversión mecánica de vuelta — no tiene ese trabajo manual. Si hace falta
+re-importar, mejor hacerlo contra posts puntuales a mano, no con un re-run completo.
+
 ## Deploy (GitHub Pages)
 
 1. Creá un repo en GitHub y pusheá esto a `main`.

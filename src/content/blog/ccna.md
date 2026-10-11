@@ -8,7 +8,7 @@ draft: false
 legacy: true
 ---
 
-[![](/images/legacy/ccna/img_CCNA.jpg)](/images/legacy/ccna/img%5FCCNA.jpg)  
+[![](/images/legacy/ccna/img_CCNA.jpg)](/images/legacy/ccna/img_CCNA.jpg)  
 Bueno he tenido ya unas cuantas clases del CCNA Modulo 1 y lo veo bien, el profesor muy correcto en sus explicaciones, el contenido de la currícula es extenso, hay mucho para leer, ver, para practicar con el Packet Tracer, un programa muy interesante y con muchas posibilidades para investigar.  
 Hasta el momento vimos desde cual es la importancia de la redes en la actualidad y la inevitable convergencia de todas las tecnologías como a las Red de Redes hasta la investigación de el movimiento de los paquetes de broadcast en una red pequeña y ahora estamos practicando binarios para Subnetear o hacer SubRedes de una dirección de red otorgada previamente.  
 Mi opinión acerca de la currícula es que por el momento se hace sencillo entender todo lo que se explica igualmente yo antes de entrar al curso ya tenia una noción de redes pero ahora no solo lo entiendo sino que lo puedo explicar también lo cual enriquece mucho mas el aprendizaje.  

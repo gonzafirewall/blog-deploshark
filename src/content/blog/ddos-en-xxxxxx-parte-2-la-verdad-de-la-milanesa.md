@@ -11,12 +11,12 @@ Ahora el post anterior fue el principio por que el titulo hablaba de otra cosa. 
   
 El tema es que razonablemente no se puede acceder a este via usuario admin lo que en principio ya fue sorprendente pero algo que se olvidaron o lo hicieron a proposito es que si se puede con el usuario GUEST.  
   
-[![](/images/legacy/ddos-en-xxxxxx-parte-2-la-verdad-de-la-milanesa/Selección_007.png)](/images/legacy/ddos-en-xxxxxx-parte-2-la-verdad-de-la-milanesa/Selección%5F007.png)
+[![](/images/legacy/ddos-en-xxxxxx-parte-2-la-verdad-de-la-milanesa/Selección_007.png)](/images/legacy/ddos-en-xxxxxx-parte-2-la-verdad-de-la-milanesa/Selección_007.png)
   
   
 Que puede hacer dos cosas interesantes sobre el equipo, una es "REINICIARLO" y otra es dejarlo en "PREDETERMINADO de FÁBRICA" bueno hasta acá todo masomenos bien por que de última reiniciarlo o ponerlo en Predeterminado te perjudica a vos mismo.  
   
-[![](/images/legacy/ddos-en-xxxxxx-parte-2-la-verdad-de-la-milanesa/Selección_008.png)](/images/legacy/ddos-en-xxxxxx-parte-2-la-verdad-de-la-milanesa/Selección%5F008.png)
+[![](/images/legacy/ddos-en-xxxxxx-parte-2-la-verdad-de-la-milanesa/Selección_008.png)](/images/legacy/ddos-en-xxxxxx-parte-2-la-verdad-de-la-milanesa/Selección_008.png)
 
   
 Pero bueno uno es inquieto y cuando ve una IP pública lo que normalmente hace alguien con conocimientos de Redes es probar si se puede hacerle PING a algún compañero de la red y una vez que lo puede hacer da un paso más y le mandas un NMAP.  

@@ -20,7 +20,7 @@ _Este es el resumen que el libro ofrece para el Capitulo 5 pero voy a tratar de 
   
 SLA (Service Level Agreement): La disponibilidad prevista por un sistema de computación o servicio de Hosting es frecuentemente expresada como un "Acuerdo de Nivel de Servicio" (Service Level Agreement). Este SLA especifica el nivel de disponibilidad que es garantizado y, usualmente, las penalidades que el sistema de computación o servicio de hosting sufrirán si el SLA es violado.  
   
-[![](/images/legacy/disponibilidad-capitulo-5/IMG_20131001_071822.jpg)](/images/legacy/disponibilidad-capitulo-5/IMG%5F20131001%5F071822.jpg)
+[![](/images/legacy/disponibilidad-capitulo-5/IMG_20131001_071822.jpg)](/images/legacy/disponibilidad-capitulo-5/IMG_20131001_071822.jpg)
   
   
 Como se lee en el capitulo anterior \[0\] los atributos de calidad son analizados en un Escenario que define varias cuestiones con respecto al contexto. Aquí lo haremos en base a la Disponibilidad.  

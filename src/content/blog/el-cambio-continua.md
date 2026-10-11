@@ -9,7 +9,7 @@ legacy: true
 
 Teniendo como base el proverbio taoista que dice algo así como "el cambio es la única constante". Avancé con una cantidad de cambios. Cambié definitivamente mi Ubuntu 13.10, por Huayra \[0\]el Sistema Operativo que se usa en la Netbooks del programa Conectar Igualdad \[1\] y que ahora uso como SysAdmin de la empresa Quicuo.  
   
-[![](/images/legacy/el-cambio-continua/huayra_screen.png)](/images/legacy/el-cambio-continua/huayra%5Fscreen.png)
+[![](/images/legacy/el-cambio-continua/huayra_screen.png)](/images/legacy/el-cambio-continua/huayra_screen.png)
 
   
 Es muy bonito mejoraron mucho el diseño si mal no recuerdo antes era demasiado violeta, me gusta ver como "vuela la vaca" cuando la Notebook arranca, con respecto al funcionamiento, el debian wheezy que tiene como base y el gestor de ventanas Mate son muy livianos. Lo que me hizo recordar que me estaba faltando archey en mi terminal \[2\].  

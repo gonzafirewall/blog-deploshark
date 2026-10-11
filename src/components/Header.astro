@@ -6,7 +6,7 @@ import ThemeToggle from './ThemeToggle.astro';
 <header class="site-header">
   <div class="inner">
     <a class="brand" href="/">
-      <img src="/logo_deploshark.png" alt="Deploshark" width="28" height="28" />
+      <img src="/logo-icon.png" alt="Deploshark" class="brand-icon" />
       <span>{SITE_TITLE}</span>
     </a>
     <nav>
@@ -48,6 +48,11 @@ import ThemeToggle from './ThemeToggle.astro';
     text-decoration: none;
     margin-right: auto;
     white-space: nowrap;
+  }
+  .brand-icon {
+    height: 34px;
+    width: auto;
+    border-radius: 0;
   }
   nav {
     display: flex;

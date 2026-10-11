@@ -67,10 +67,18 @@ function slugify(title) {
     .replace(/-+$/g, '');
 }
 
-function stripHtml(html) {
-  return html
-    .replace(/<[^>]+>/g, ' ')
+function decodeEntities(text) {
+  return text
     .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
+function stripHtml(html) {
+  return decodeEntities(html.replace(/<[^>]+>/g, ' '))
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -184,7 +192,13 @@ function main() {
     const updated = String(entry.updated).slice(0, 10);
     const updatedDate = updated !== pubDate ? updated : undefined;
 
-    const markdownBody = nhm.translate(rawHtml).trim();
+    // node-html-markdown percent-encodia los href de los <a> que envuelven
+    // imágenes locales (p. ej. "img_CCNA.jpg" -> "img%5FCCNA.jpg"), aunque el
+    // <img src> interno queda bien. Decodificamos esas rutas locales a mano.
+    const markdownBody = nhm
+      .translate(rawHtml)
+      .trim()
+      .replace(/\/images\/legacy\/[^)"\s]+/g, (m) => decodeURIComponent(m));
     const description = makeDescription(rawHtml);
 
     const fm = frontmatter({

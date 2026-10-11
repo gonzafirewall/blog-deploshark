@@ -22,8 +22,8 @@ Escribe el comando **c:c(demo)** a compilar el archivo.
   
 Intenta correr la consulta:  
   
-```
- demo:double(12).
+```erlang
+demo:double(12).
 ```
 
 Esto es solo una prueba si estás empezando con el sistema y usar el editor junto con el sistema Erlang.  
@@ -36,16 +36,16 @@ Esto es solo una prueba si estás empezando con el sistema y usar el editor junt
 2\. Escribe una función **temp:convert(Temperatura)** que combine la funcionalidad de **f2c** y **c2f**. Ejemplo.
   
   
-```
- > temp:convert({c,100}).
- => {f,212}
- > temp:convert({f,32}).
- => {c,0}
+```erlang
+> temp:convert({c,100}).
+=> {f,212}
+> temp:convert({f,32}).
+=> {c,0}
 ```
 
 3\. Escribe una función **mathStuff:perimeter(Form)** que nos informe el perimetro de diferentes formas. **Form** puede ser una de las siguientes.  
   
-```
+```erlang
 {square,Side}
 {circle,Radius}
 {triangle,A,B,C}

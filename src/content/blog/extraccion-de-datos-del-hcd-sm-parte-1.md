@@ -25,11 +25,13 @@ entonces lo que hacemos es hacer click con el botón derecho y decirle que nos c
   
 Entre todo el palabrerio sobre el final vamos a encontrar lo siguiente.  
   
-\--data 'Criterio1=&Criterio2=&Criterio3=&chkAvanzada=1&Numero=&Letra=&Anio=&cboProyectos=0&**FechaDesde=01%2F01%2F2013&FechaHasta=31%2F12%2F2013**&cboEstados=0&Buscar=Buscar' --compressed  
-  
-Resaltado están los datos que nosotros ingresamos como criterio de búsqueda. Por el momento solo recordemos que existen.   
-  
-Con curl instalado y si no lo tienen en un Debian o Ubuntu se instala con **apt-get install curl**, tienen que hacer la consulta que copiaron del Chrome y agregarle "**\> exp\_2013.html"** lo que están haciendo de esta manera es decirle que cuando se ejecute el CURL lo que traiga lo guarde en un archivo con ese nombre **exp\_2013.html**.  
+```bash
+--data 'Criterio1=&Criterio2=&Criterio3=&chkAvanzada=1&Numero=&Letra=&Anio=&cboProyectos=0&FechaDesde=01%2F01%2F2013&FechaHasta=31%2F12%2F2013&cboEstados=0&Buscar=Buscar' --compressed
+```
+
+Resaltado están los datos que nosotros ingresamos como criterio de búsqueda (`FechaDesde` y `FechaHasta`). Por el momento solo recordemos que existen.
+
+Con curl instalado y si no lo tienen en un Debian o Ubuntu se instala con `apt-get install curl`, tienen que hacer la consulta que copiaron del Chrome y agregarle `> exp_2013.html`, lo que están haciendo de esta manera es decirle que cuando se ejecute el CURL lo que traiga lo guarde en un archivo con ese nombre `exp_2013.html`.  
   
 Bueno hasta acá la extracción de los datos de la web a nuestra PC en una próximo POST describiré como hacer par analizar ese archivo HTML con Python y algunas librerias.  
   

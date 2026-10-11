@@ -39,20 +39,27 @@ Ahora vamos a lo nuestro como configurar un RAID0 para una instancia EC2 sobre V
   
 Nosotros somos gente grosa así que usamos el tipo de servidores que sostiene al 95% de Internet servidores Linux entonces vamos a usar el comando "lsblk" que según man "lista los dispositivos de bloque"  
   
-vamos a ver algo como esto  
-  
-NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT  
-sda 8:0 0 8G 0 disk  
-└─sda1 8:7 0 8G 0 part /  
-sdb 8:0 0 30G 0 disk  
-sdc 8:0 0 30G 0 disk  
-  
+vamos a ver algo como esto
+
+```console
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sda    8:0    0   8G  0 disk
+└─sda1 8:7    0   8G  0 part /
+sdb    8:0    0  30G  0 disk
+sdc    8:0    0  30G  0 disk
+```
+
 El disco sda de 8G es el que se monta como root por default en todas las intancias EC2 y el sdb y sdc son los que se van a usar para hacer el RAID0.  
   
-**_$ sudo mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=numero\_de\_volumenes dispositivo\_1 dispositivo\_2_**  
-  
-Ejemplo:  
-**_$ sudo mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 sdb sdc_**  
+```bash
+$ sudo mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=numero_de_volumenes dispositivo_1 dispositivo_2
+```
+
+Ejemplo:
+
+```bash
+$ sudo mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 sdb sdc
+```  
 
   
 Esto básicamente lo que hace es crear un nuevo dispositivo llamado md0 con los bloques sdb y sdc usando el nivel "stripe" que también podría ser "0" o "raid0"
@@ -66,17 +73,19 @@ Esto básicamente lo que hace es crear un nuevo dispositivo llamado md0 con los 
 Luego crearemos un sistema de archivos y un punto de montaje para montar el dispositivo.
 
   
-_**$ sudo mkfs.ext4 /dev/md0**_
-
-_**$ sudo mkdir /mnt/md0**_
-
-_**$ sudo mount -t ext4 /dev/md0 /mnt/md0**_
+```bash
+$ sudo mkfs.ext4 /dev/md0
+$ sudo mkdir /mnt/md0
+$ sudo mount -t ext4 /dev/md0 /mnt/md0
+```
 
   
 Una vez montado ya podremos usarlo pero tendremos algunos problemas (no aparecerá el punto de montaje) si paramos y prendemos la instancia para eso se debe agregar la siguiente linea al archivo /etc/fstab. 
 
   
-_**/dev/md0 /mnt/md0 ext4 defaults 0 0**_
+```
+/dev/md0 /mnt/md0 ext4 defaults 0 0
+```
 
   
 Como dice el man de fstab 

@@ -1,0 +1,119 @@
+---
+// Eventos custom de Umami. El script base se carga en BaseLayout; acá solo
+// mandamos eventos con umami.track(). Si Umami no cargó (adblock, etc.) los
+// eventos se descartan en silencio y el sitio funciona igual.
+//
+// Eventos:
+//   scroll-depth   { percent: 25 | 50 | 75 | 100 }          — una vez por umbral por página
+//   copy-code      { method: 'button' | 'selection', lang }
+//   deploshark-click { location: 'header' | 'footer' | 'post' | 'other', url }
+---
+
+<script>
+  type EventData = Record<string, string | number>;
+
+  function track(name: string, data?: EventData) {
+    const umami = (window as any).umami;
+    if (umami && typeof umami.track === 'function') umami.track(name, data);
+  }
+
+  // --- Scroll al X% ---
+  const thresholds = [25, 50, 75, 100];
+  const reached = new Set<number>();
+  let ticking = false;
+
+  function checkScroll() {
+    ticking = false;
+    const doc = document.documentElement;
+    const scrollable = doc.scrollHeight - window.innerHeight;
+    // Páginas que entran enteras en pantalla no cuentan como scroll.
+    if (scrollable <= 0) return;
+    const percent = (window.scrollY / scrollable) * 100;
+    for (const t of thresholds) {
+      // 100% con tolerancia de 1-2px por redondeo del navegador.
+      if (!reached.has(t) && percent >= (t === 100 ? 98 : t)) {
+        reached.add(t);
+        track('scroll-depth', { percent: t });
+      }
+    }
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(checkScroll);
+      }
+    },
+    { passive: true },
+  );
+
+  // --- Copy code ---
+  function langOf(pre: Element) {
+    return pre.getAttribute('data-language') ?? 'plaintext';
+  }
+
+  for (const pre of document.querySelectorAll<HTMLPreElement>('.prose pre')) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-block';
+    pre.replaceWith(wrapper);
+    wrapper.append(pre);
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'copy-code';
+    button.textContent = 'copiar';
+    button.setAttribute('aria-label', 'Copiar código');
+    wrapper.append(button);
+
+    button.addEventListener('click', async () => {
+      const text = pre.querySelector('code')?.innerText ?? pre.innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = 'copiado ✓';
+        track('copy-code', { method: 'button', lang: langOf(pre) });
+      } catch {
+        button.textContent = 'error';
+      }
+      setTimeout(() => (button.textContent = 'copiar'), 1500);
+    });
+  }
+
+  // Ctrl+C / menú contextual sobre una selección dentro de un bloque de código.
+  document.addEventListener('copy', () => {
+    const node = window.getSelection()?.anchorNode;
+    const el = node instanceof Element ? node : node?.parentElement;
+    const pre = el?.closest('.prose pre');
+    if (pre) track('copy-code', { method: 'selection', lang: langOf(pre) });
+  });
+
+  // --- Clicks a deploshark.com ---
+  const COMPANY_HOSTS = new Set(['deploshark.com', 'www.deploshark.com']);
+
+  function onLinkClick(event: MouseEvent) {
+    // click = izquierdo, auxclick = botón del medio (abrir en pestaña nueva).
+    if (event.type === 'auxclick' && event.button !== 1) return;
+    const link = (event.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
+    if (!link) return;
+    let url: URL;
+    try {
+      url = new URL(link.href);
+    } catch {
+      return;
+    }
+    if (!COMPANY_HOSTS.has(url.hostname)) return;
+
+    const location = link.closest('header.site-header')
+      ? 'header'
+      : link.closest('footer.site-footer')
+        ? 'footer'
+        : link.closest('.prose')
+          ? 'post'
+          : 'other';
+    track('deploshark-click', { location, url: url.href });
+  }
+
+  document.addEventListener('click', onLinkClick);
+  document.addEventListener('auxclick', onLinkClick);
+</script>

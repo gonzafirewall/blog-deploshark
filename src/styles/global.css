@@ -74,6 +74,38 @@ pre code {
   padding: 0;
 }
 
+/* Botón "copiar" que agrega Analytics.astro a los bloques de código de los posts. */
+.code-block {
+  position: relative;
+}
+.copy-code {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  color: var(--text-dim);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.code-block:hover .copy-code,
+.copy-code:focus-visible {
+  opacity: 1;
+}
+.copy-code:hover {
+  color: var(--text);
+}
+@media (hover: none) {
+  .copy-code {
+    opacity: 1;
+  }
+}
+
 blockquote {
   margin: 1.5rem 0;
   padding: 0.2rem 1.1rem;

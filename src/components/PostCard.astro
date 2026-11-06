@@ -1,4 +1,5 @@
 ---
+import { url } from '../consts';
 interface Props {
   slug: string;
   title: string;
@@ -16,7 +17,7 @@ const formatted = pubDate.toLocaleDateString('es-AR', {
 ---
 
 <article class="post-card">
-  <a class="title-link" href={`/blog/${slug}/`}>
+  <a class="title-link" href={url(`/${slug}/`)}>
     <h2>{title}</h2>
   </a>
   <p class="description">{description}</p>
@@ -24,7 +25,7 @@ const formatted = pubDate.toLocaleDateString('es-AR', {
     <time datetime={pubDate.toISOString()}>{formatted}</time>
     {legacy && <span class="badge" title="Migrado del blog viejo en Blogger">archivo</span>}
     {tags.slice(0, 3).map((tag) => (
-      <a class="tag" href={`/tags/${tag}/`}>#{tag}</a>
+      <a class="tag" href={url(`/tags/${tag}/`)}>#{tag}</a>
     ))}
   </div>
 </article>

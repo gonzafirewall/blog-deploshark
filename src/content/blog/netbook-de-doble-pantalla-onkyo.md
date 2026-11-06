@@ -40,4 +40,4 @@ Soporta **Wifi** y **Bluethooth 2.1**.
   
 hay un Emoticono en MSN llamado baba que es útil para este momento.
 
-![](/images/legacy/netbook-de-doble-pantalla-onkyo/Baba.jpg)
+![](/blog/images/legacy/netbook-de-doble-pantalla-onkyo/Baba.jpg)

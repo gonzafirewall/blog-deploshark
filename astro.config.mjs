@@ -4,7 +4,10 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blog.deploshark.com',
+  site: 'https://deploshark.com',
+  // El blog vive en deploshark.com/blog/ (mismo dominio que la web, suma autoridad SEO).
+  base: '/blog',
+  trailingSlash: 'always',
   integrations: [sitemap()],
   markdown: {
     // Un solo tema de código (siempre oscuro) en vez del dual light/dark de

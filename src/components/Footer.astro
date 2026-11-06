@@ -1,5 +1,5 @@
 ---
-import { COMPANY_URL, AUTHOR } from '../consts';
+import { COMPANY_URL, AUTHOR, url } from '../consts';
 const year = new Date().getFullYear();
 ---
 
@@ -9,7 +9,7 @@ const year = new Date().getFullYear();
       © {year} {AUTHOR} · <a href={COMPANY_URL} target="_blank" rel="noopener noreferrer">deploshark.com</a>
     </p>
     <p class="meta">
-      Escrito con asistencia de IA, revisado por humano. <a href="/rss.xml">RSS</a>
+      Escrito con asistencia de IA, revisado por humano. <a href={url('/rss.xml')}>RSS</a>
     </p>
   </div>
 </footer>

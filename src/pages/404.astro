@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../consts';
 ---
 
 <BaseLayout title="404">
   <div class="not-found">
     <h1>404</h1>
-    <p>Esta página no existe. <a href="/">Volver al inicio</a>.</p>
+    <p>Esta página no existe. <a href={url('/')}>Volver al inicio</a>.</p>
   </div>
 </BaseLayout>
 

@@ -9,7 +9,7 @@ legacy: true
 
 Llegará prontamente una nueva edición de **_OriginalHacker_**\[0\], que continua con la misma dedicación en la explicación y con una exactitud teórica y práctica que asombra linea a linea.  
   
-[![](/images/legacy/the-original-hacker-nro4/tapa4.png)](/images/legacy/the-original-hacker-nro4/tapa4.png)
+[![](/blog/images/legacy/the-original-hacker-nro4/tapa4.png)](/blog/images/legacy/the-original-hacker-nro4/tapa4.png)
 
   
 Es tán copado y entretenido para quienes nos gusta hacer mover nuestro cerebro que cuando terminás de leerlo te quedás con ganas de más.  

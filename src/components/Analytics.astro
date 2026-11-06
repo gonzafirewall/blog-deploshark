@@ -103,6 +103,8 @@
       return;
     }
     if (!COMPANY_HOSTS.has(url.hostname)) return;
+    // El blog vive en deploshark.com/blog/: esos links son navegación interna, no clicks a la web.
+    if (url.pathname === '/blog' || url.pathname.startsWith('/blog/')) return;
 
     const location = link.closest('header.site-header')
       ? 'header'

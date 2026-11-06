@@ -27,7 +27,7 @@ pg\_dump
   
 Próximo paso levantar una replicación de Postgres, modificar los scripts de deploy de Testing a Producción.  
   
-[![](/images/legacy/amazon-ec2/quicuo.jpg)](/images/legacy/amazon-ec2/quicuo.jpg)
+[![](/blog/images/legacy/amazon-ec2/quicuo.jpg)](/blog/images/legacy/amazon-ec2/quicuo.jpg)
 
   
 Powered by

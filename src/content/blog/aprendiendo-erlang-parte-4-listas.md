@@ -114,4 +114,4 @@ El | que nosotros usamos es llamado el operador cons (constructor). De hecho, cu
   
 Esto quiere decir que cualquier lista puede ser creada siguiendo la formula \[Term1 | \[Term2 | \[... | \[ TermN \] \] \] \] ... Las listas pueden de este modo ser definidas de manera recursivamente como una cabeza precedida de una cola, que en si misma es una cabeza seguida de más cabezas. En este sentido nosotros podriamos imaginar una lista siendo un poco como un gusano tu podrías cortarlo en la mitad y entonces obtendrías dos gusanos.  
   
-[![](/images/legacy/aprendiendo-erlang-parte-4-listas/worm.png)](/images/legacy/aprendiendo-erlang-parte-4-listas/worm.png)
+[![](/blog/images/legacy/aprendiendo-erlang-parte-4-listas/worm.png)](/blog/images/legacy/aprendiendo-erlang-parte-4-listas/worm.png)

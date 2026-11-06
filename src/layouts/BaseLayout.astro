@@ -3,7 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import '../styles/global.css';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, url } from '../consts';
 
 interface Props {
   title?: string;
@@ -16,7 +16,7 @@ interface Props {
 const {
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
-  image = '/logo_deploshark.png',
+  image = url('/logo_deploshark.png'),
   article = false,
   wide = false,
 } = Astro.props;
@@ -30,7 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="/logo-icon.png" />
+    <link rel="icon" type="image/png" href={url('/logo-icon.png')} />
     <link rel="canonical" href={canonicalURL} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
@@ -46,7 +46,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
 
-    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={url('/rss.xml')} />
 
     <script is:inline>
       (function () {

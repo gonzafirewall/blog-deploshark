@@ -1,5 +1,10 @@
 name: Deploy blog
 
+# Publica el blog en https://deploshark.com/blog/ en cada push a main.
+# Compila con Astro y manda el dist/ al droplet por SSH con una llave restringida:
+# del lado del server solo puede correr /root/bin/blog-receive (descomprime la
+# release y mueve el symlink `current` que sirve Caddy). Guarda las 3 últimas.
+
 on:
   push:
     branches: [main]
@@ -7,28 +12,39 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: deploy-blog
+  cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: withastro/action@v3
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
         with:
           node-version: "22"
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - name: Publicar en deploshark.com/blog/
+        env:
+          DEPLOY_KEY: ${{ secrets.BLOG_DEPLOY_KEY }}
+          KNOWN_HOSTS: ${{ secrets.BLOG_DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          tar czf - -C dist . | ssh -i ~/.ssh/id_deploy -o IdentitiesOnly=yes \
+            root@159.65.73.58 "deploy ${GITHUB_SHA::7}"
+
+      - name: Verificar
+        run: |
+          sleep 2
+          test "$(curl -s -o /dev/null -w '%{http_code}' "https://deploshark.com/blog/?v=${GITHUB_SHA::7}")" = 200
